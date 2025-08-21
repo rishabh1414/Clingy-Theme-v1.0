@@ -11,7 +11,8 @@
   const err = (...a) => console.error("[CLINGY]", ...a);
 
   // TODO: point this to your hosted CSS
-  const CSS_CDN_URL = "https://cdn.yourdomain.com/clingy-ghl-theme.css";
+  const CSS_CDN_URL =
+    "https://cdn.jsdelivr.net/gh/rishabh1414/Clingy-Theme-v1.0@main/themeSwitcherv1.css";
 
   // Your existing endpoints
   const TOKEN_API =
