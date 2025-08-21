@@ -1,0 +1,335 @@
+/* ===================== CLINGY – GHL THEME (Sidebar + Topbar Only) ===================== */
+/* Base tokens (used when no data-theme is set). We keep them neutral. */
+:root {
+  /* Containers (sidebar bg + topbar gradient end) */
+  --sb-bg: #0b1a12;
+  --topbar-grad-end: #14532d;
+
+  /* Text */
+  --nav-text: #cfe7da;
+  --topbar-text: #e9fbf2;
+
+  /* Accent (hover/active + primary buttons) */
+  --interact-bg: #15803d;
+  --interact-text: #ffffff;
+
+  /* Layout & motion */
+  --radius-sidebar-link: 20px;
+  --radius-topmenu-link: 6px;
+  --link-padding-sidebar: 10px 15px;
+  --link-padding-topbar: 3px 10px;
+  --link-margin-inline: 0 5px;
+  --anim-fast: 160ms;
+  --shadow-interact: 0 6px 14px rgba(0, 0, 0, 0.22);
+
+  /* Scrollbar */
+  --scrollbar-track: var(--sb-bg);
+  --scrollbar-thumb: #14532d;
+}
+
+/* ========== THEME PRESETS (switch by setting <html data-theme="…">) ========== */
+
+/* YELLOW (default): Black containers, yellow accent #ffdf2b */
+html[data-theme="yellow"] {
+  --sb-bg: #000000;
+  --topbar-grad-end: #111111;
+
+  --nav-text: #f5f5f5;
+  --topbar-text: #fafafa;
+
+  --interact-bg: #ffdf2b; /* accent */
+  --interact-text: #0a0a0a; /* readable over yellow */
+
+  --scrollbar-track: var(--sb-bg);
+  --scrollbar-thumb: #2b2b2b;
+}
+
+/* GREEN: dark green containers + green accent */
+html[data-theme="green"] {
+  --sb-bg: #0b1a12;
+  --topbar-grad-end: #14532d;
+
+  --nav-text: #cfe7da;
+  --topbar-text: #e9fbf2;
+
+  --interact-bg: #15803d;
+  --interact-text: #ffffff;
+
+  --scrollbar-track: var(--sb-bg);
+  --scrollbar-thumb: #14532d;
+}
+
+/* RED: deep oxblood containers + red accent */
+html[data-theme="red"] {
+  --sb-bg: #19070a;
+  --topbar-grad-end: #3a0b12;
+
+  --nav-text: #f3d9dd;
+  --topbar-text: #ffeef1;
+
+  --interact-bg: #dc2626;
+  --interact-text: #ffffff;
+
+  --scrollbar-track: var(--sb-bg);
+  --scrollbar-thumb: #3a0b12;
+}
+
+/* BLACK: pure black containers + gray accent (subtle) */
+html[data-theme="black"] {
+  --sb-bg: #000000;
+  --topbar-grad-end: #121212;
+
+  --nav-text: #e5e5e5;
+  --topbar-text: #f5f5f5;
+
+  --interact-bg: #2e2e2e;
+  --interact-text: #ffffff;
+
+  --scrollbar-track: var(--sb-bg);
+  --scrollbar-thumb: #2e2e2e;
+}
+
+/* WHITE: light containers + dark accent for visibility */
+html[data-theme="white"] {
+  --sb-bg: #ffffff;
+  --topbar-grad-end: #f3f4f6;
+
+  --nav-text: #111827;
+  --topbar-text: #111827;
+
+  --interact-bg: #111827;
+  --interact-text: #ffffff;
+
+  --scrollbar-track: #e5e7eb;
+  --scrollbar-thumb: #9ca3af;
+}
+
+/* ===================== SHARED RULES (use only variables) ===================== */
+
+/* Font */
+body {
+  font-family: "Nunito", system-ui, sans-serif !important;
+}
+
+/* Sidebar container */
+.sidebar-v2-location #sidebar-v2,
+.sidebar-v2-location #sidebar-v2.default-bg-color {
+  background: var(--sb-bg) !important;
+  color: #ffffff !important;
+}
+
+/* Force any .default-bg-color inside sidebar to match container */
+.sidebar-v2-location #sidebar-v2 .default-bg-color,
+.sidebar-v2-location #sidebar-v2 * .default-bg-color {
+  background: var(--sb-bg) !important;
+  color: #ffffff !important;
+}
+.sidebar-v2-location #sidebar-v2 .default-bg-color * {
+  color: #ffffff !important;
+}
+
+/* Keep these transparent */
+.sidebar-v2-location #sidebar-v2 #location-switcher-sidbar-v2,
+.sidebar-v2-location #sidebar-v2 #globalSearchOpener,
+.sidebar-v2-location #sidebar-v2 #quickActions {
+  background: transparent !important;
+}
+
+/* Sidebar header containers (scrollbars + padding) */
+.sidebar-v2-location #sidebar-v2 .hl_nav-header,
+.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer {
+  padding-right: 10px !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+.sidebar-v2-location #sidebar-v2 .hl_nav-header::-webkit-scrollbar,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header-without-footer::-webkit-scrollbar {
+  width: 10px;
+}
+.sidebar-v2-location #sidebar-v2 .hl_nav-header::-webkit-scrollbar-track,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header-without-footer::-webkit-scrollbar-track {
+  background: var(--scrollbar-track) !important;
+}
+.sidebar-v2-location #sidebar-v2 .hl_nav-header::-webkit-scrollbar-thumb,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header-without-footer::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb) !important;
+  border-radius: 8px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+/* Hide spacer div */
+#sidebar-v2
+  > div.relative.flex.flex-col.h-screen.w-56
+  > div
+  > div.flex.flex-col.w-full.overflow-x-hidden.overflow-y-auto.hl_nav-header
+  > nav
+  > div {
+  display: none !important;
+}
+
+/* Sidebar links (custom links + without-footer links) */
+.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a,
+#sidebar-v2 a.custom-link,
+.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer nav a {
+  color: var(--nav-text) !important;
+  background: transparent !important;
+  border-radius: var(--radius-sidebar-link) !important;
+  padding: var(--link-padding-sidebar) !important;
+  margin: 10px 0 !important;
+  transition: background-color var(--anim-fast), color var(--anim-fast),
+    transform var(--anim-fast), box-shadow var(--anim-fast);
+}
+
+/* Hover + Active (same) */
+.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a:hover,
+#sidebar-v2 a.custom-link:hover,
+.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a.router-link-active,
+.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a.router-link-exact-active,
+#sidebar-v2 a.custom-link.router-link-active,
+#sidebar-v2 a.custom-link.router-link-exact-active,
+.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a[aria-current="page"],
+.sidebar-v2-location #sidebar-v2 .hl_nav-settings nav a:hover,
+.sidebar-v2-location #sidebar-v2 .hl_nav-settings nav a.router-link-active,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-settings
+  nav
+  a.router-link-exact-active,
+.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer nav a:hover,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header-without-footer
+  nav
+  a.router-link-active,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header-without-footer
+  nav
+  a.router-link-exact-active {
+  background: var(--interact-bg) !important;
+  color: var(--interact-text) !important;
+  box-shadow: var(--shadow-interact);
+  transform: translateY(-1px);
+}
+
+/* Sidebar back button */
+.sidebar-v2-location #sidebar-v2 #backButtonv2 {
+  background: var(--interact-bg) !important;
+  color: var(--interact-text) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  transition: background-color var(--anim-fast), transform var(--anim-fast),
+    box-shadow var(--anim-fast);
+}
+.sidebar-v2-location #sidebar-v2 #backButtonv2:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+
+/* Topbar gradient (from sidebar bg → lighter tone) */
+.sidebar-v2-location .hl_header {
+  background-image: linear-gradient(
+    90deg,
+    var(--sb-bg),
+    var(--topbar-grad-end)
+  ) !important;
+  color: var(--topbar-text) !important;
+}
+
+/* Hide topbar title */
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navtitle {
+  display: none !important;
+}
+
+/* Topbar link container */
+.sidebar-v2-location .hl_header .topmenu-nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 5px 0 !important;
+  gap: 4px;
+}
+
+/* Topbar links */
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem {
+  color: var(--nav-text) !important;
+  background: transparent !important;
+  padding: var(--link-padding-topbar) !important;
+  border-radius: var(--radius-topmenu-link) !important;
+  border: none !important;
+  transition: background-color var(--anim-fast), color var(--anim-fast),
+    transform var(--anim-fast), box-shadow var(--anim-fast);
+}
+
+/* Topbar hover + active */
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem:hover,
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem.active,
+.sidebar-v2-location
+  .hl_header
+  .topmenu-nav
+  .topmenu-navitem.router-link-active,
+.sidebar-v2-location
+  .hl_header
+  .topmenu-nav
+  .topmenu-navitem[aria-current="page"] {
+  background: var(--interact-bg) !important;
+  color: var(--interact-text) !important;
+  box-shadow: var(--shadow-interact);
+  transform: translateY(-1px);
+}
+
+/* Hide divider + specific item */
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem.divider,
+#tb_sites-domain-settings {
+  display: none !important;
+}
+
+/* Submenu placement */
+.sidebar-v2-location .hl_header .topmenu-nav [role="menu"] {
+  position: absolute !important;
+  top: 20px !important;
+}
+
+/* Naive‑UI Primary Buttons (kill borders; all sizes) */
+.n-button--primary-type.n-button--small-type,
+.n-button--primary-type.n-button--medium-type,
+.n-button--primary-type.n-button--large-type,
+button.n-button.n-button--primary-type {
+  background: var(--interact-bg) !important;
+  color: var(--interact-text) !important;
+  border: none !important;
+  outline: none !important;
+  border-radius: 6px !important;
+  transition: transform var(--anim-fast), filter var(--anim-fast),
+    box-shadow var(--anim-fast);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.n-button--primary-type .n-button__border,
+.n-button--primary-type .n-button__state-border {
+  display: none !important;
+}
+.n-button--primary-type:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+.n-button--primary-type:active {
+  transform: translateY(0);
+  filter: brightness(0.98);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
