@@ -4,7 +4,7 @@
   /* Containers (sidebar bg + topbar gradient end) */
   --sb-bg: #0b1a12;
   --topbar-grad-end: #14532d;
-
+  --topbar-grad-split: 70%;
   /* Text */
   --nav-text: #cfe7da;
   --topbar-text: #e9fbf2;
@@ -25,6 +25,15 @@
   /* Scrollbar */
   --scrollbar-track: var(--sb-bg);
   --scrollbar-thumb: #14532d;
+
+  --glass-bg: rgba(255, 255, 255, 0.1); /* base translucency */
+  --glass-bg-hover: rgba(255, 255, 255, 0.16);
+  --glass-border: color-mix(
+    in oklab,
+    var(--interact-bg) 16%,
+    transparent
+  ); /* very soft */
+  --glass-glow: color-mix(in oklab, var(--interact-bg) 26%, transparent);
 }
 
 /* ========== THEME PRESETS (switch by setting <html data-theme="…">) ========== */
@@ -129,11 +138,6 @@ body {
 }
 
 /* Keep these transparent */
-.sidebar-v2-location #sidebar-v2 #location-switcher-sidbar-v2,
-.sidebar-v2-location #sidebar-v2 #globalSearchOpener,
-.sidebar-v2-location #sidebar-v2 #quickActions {
-  background: transparent !important;
-}
 
 /* Sidebar header containers (scrollbars + padding) */
 .sidebar-v2-location #sidebar-v2 .hl_nav-header,
@@ -218,7 +222,27 @@ body {
   box-shadow: var(--shadow-interact);
   transform: translateY(-1px);
 }
-
+.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a:hover .nav-title,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header
+  nav
+  a.router-link-active
+  .nav-title,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header
+  nav
+  a.router-link-exact-active
+  .nav-title,
+.sidebar-v2-location
+  #sidebar-v2
+  .hl_nav-header
+  nav
+  a[aria-current="page"]
+  .nav-title {
+  color: var(--interact-text) !important;
+}
 /* Sidebar back button */
 .sidebar-v2-location #sidebar-v2 #backButtonv2 {
   background: var(--interact-bg) !important;
@@ -236,11 +260,17 @@ body {
 
 /* Topbar gradient (from sidebar bg → lighter tone) */
 .sidebar-v2-location .hl_header {
+  /* fallback so there’s always a solid color first */
+  background-color: var(--sb-bg) !important;
+
+  /* 0–70% = sidebar bg, 70–100% = theme accent */
   background-image: linear-gradient(
     90deg,
-    var(--sb-bg),
-    var(--topbar-grad-end)
+    var(--sb-bg) 0%,
+    var(--sb-bg) var(--topbar-grad-split),
+    var(--interact-bg) 100%
   ) !important;
+
   color: var(--topbar-text) !important;
 }
 
@@ -293,11 +323,31 @@ body {
 }
 
 /* Submenu placement */
+
 .sidebar-v2-location .hl_header .topmenu-nav [role="menu"] {
   position: absolute !important;
-  top: 20px !important;
+  top: 22px !important;
+  padding: 5px;
+}
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem a {
+  margin: 5px 0 !important;
+  border-radius: 20px !important;
+  padding: 5px 10px !important;
+}
+/* === Topbar navitem hover/active styling === */
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem a:hover,
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem a:focus,
+.sidebar-v2-location .hl_header .topmenu-nav .topmenu-navitem a.active {
+  color: #000 !important;
+  background: var(--interact-bg) !important;
 }
 
+/* === Submenu container inside topbar === */
+.sidebar-v2-location .hl_header .topmenu-nav [role="menu"] {
+  padding: 5px !important;
+  border-radius: 10px !important;
+  background: #fff; /* keeps dropdown readable */
+}
 /* Naive‑UI Primary Buttons (kill borders; all sizes) */
 .n-button--primary-type.n-button--small-type,
 .n-button--primary-type.n-button--medium-type,
