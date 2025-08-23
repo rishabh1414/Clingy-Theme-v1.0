@@ -1,11 +1,11 @@
 /* =========================================================
-   CLINGY — Theme + CV Loader
+   CLINGY — Theme + CV Loader (App Theme only)
    - Runs ONLY when locationId changes (not on every route)
    - Global loader sits ABOVE GHL loader
-   - Fetches 7 CVs + "Company Theme"
+   - Fetches 7 CVs + "App Theme"
    - Applies <html data-theme="..."> with fallback to yellow
    - Swaps agency logo (Light → Dark fallback)
-   - Exposes window.locationCustomValues
+   - Exposes window.locationCustomValues (uses appTheme)
    - Verbose console logs
    ========================================================= */
 (function () {
@@ -30,7 +30,7 @@
     AGENCY_NAME: "Agency Name",
     PHONE: "Agency Phone Number",
     SUPPORT_EMAIL: "Agency Support Email",
-    COMPANY_THEME: "Company Theme",
+    APP_THEME: "App Theme", // <-- main theme CV
   };
 
   // Defaults
@@ -81,63 +81,7 @@
     "olive",
     "aqua",
   ];
-  const THEME_ALIASES = {
-    yellow: [
-      "yellow",
-      "team yellow",
-      "theme yellow",
-      "golden",
-      "amber",
-      "theme-yellow",
-      "team-yellow",
-    ],
-    green: [
-      "green",
-      "team green",
-      "theme green",
-      "forest",
-      "emerald",
-      "team-green",
-      "theme-green",
-    ],
-    red: [
-      "red",
-      "team red",
-      "theme red",
-      "crimson",
-      "rose",
-      "team-red",
-      "theme-red",
-    ],
-    black: ["black", "dark", "charcoal", "team-black", "theme-black"],
-    white: ["white", "light", "ivory", "team-white", "theme-white"],
-    blue: ["blue", "azure", "royal", "cobalt", "team-blue", "theme-blue"],
-    teal: ["teal", "turquoise", "aqua teal", "team-teal", "theme-teal"],
-    cyan: ["cyan", "light blue", "cyan blue", "team-cyan", "theme-cyan"],
-    sky: ["sky", "sky blue", "light sky", "team-sky", "theme-sky"],
-    indigo: ["indigo", "deep blue", "team-indigo", "theme-indigo"],
-    purple: ["purple", "violet purple", "team-purple", "theme-purple"],
-    violet: ["violet", "lavender", "team-violet", "theme-violet"],
-    pink: ["pink", "hot pink", "magenta", "team-pink", "theme-pink"],
-    rose: ["rose", "rosé", "team-rose", "theme-rose"],
-    orange: ["orange", "burnt orange", "team-orange", "theme-orange"],
-    amber: ["amber", "honey", "team-amber", "theme-amber"],
-    lime: ["lime", "lime green", "team-lime", "theme-lime"],
-    emerald: ["emerald", "emerald green", "team-emerald", "theme-emerald"],
-    fuchsia: ["fuchsia", "bright pink", "team-fuchsia", "theme-fuchsia"],
-    gray: ["gray", "grey", "team-gray", "theme-gray"],
-    slate: ["slate", "slate gray", "team-slate", "theme-slate"],
-    stone: ["stone", "stone gray", "team-stone", "theme-stone"],
-    neutral: ["neutral", "neutral gray", "team-neutral", "theme-neutral"],
-    zinc: ["zinc", "zinc gray", "team-zinc", "theme-zinc"],
-    brown: ["brown", "chocolate", "coffee", "team-brown", "theme-brown"],
-    gold: ["gold", "goldenrod", "team-gold", "theme-gold"],
-    silver: ["silver", "platinum", "team-silver", "theme-silver"],
-    navy: ["navy", "navy blue", "team-navy", "theme-navy"],
-    maroon: ["maroon", "burgundy", "team-maroon", "theme-maroon"],
-    olive: ["olive", "olive green", "team-olive", "theme-olive"],
-    aqua: ["aqua", "aqua blue", "team-aqua", "theme-aqua"],
-  };
+
   const THEME_VARS = {
     yellow: {
       "--sb-bg": "#000000",
@@ -316,7 +260,7 @@
       el.style.cssText = `
         position: fixed; inset: 0;
         width: 100vw; height: 100vh;
-        background: #cce7ff;
+        background: #F0FDFE;
         display: flex; align-items: center; justify-content: center;
         flex-direction: column;
         font-family: system-ui, -apple-system, Segoe UI, Roboto, "Nunito", sans-serif;
@@ -326,8 +270,7 @@
         opacity: 1; transition: opacity 260ms ease;
         pointer-events: all;
       `;
-      el.innerHTML = `<div>Loading… Please wait</div>`;
-      // PREPEND so it’s the FIRST child — guarantees top stacking context
+      el.innerHTML = `<div>Theme is Loading....</div>`;
       document.body.insertBefore(el, document.body.firstChild || null);
       log("Global loader shown (prepended to body)");
     };
@@ -349,17 +292,9 @@
   const safe = (v, fb) => (typeof v === "string" && v.trim() ? v.trim() : fb);
 
   function canonicalizeTheme(raw) {
-    const v = normalize(raw);
-    if (!v) return DEFAULTS.theme;
-    for (const [canon, list] of Object.entries(THEME_ALIASES)) {
-      if (list.includes(v)) return canon;
-    }
+    const v = (raw || "").toString().trim().toLowerCase();
     if (THEME_KEYS.includes(v)) return v;
-    const compact = v.replace(/[^a-z]/g, "");
-    for (const key of THEME_KEYS) {
-      if (compact.includes(key)) return key;
-    }
-    return DEFAULTS.theme;
+    return DEFAULTS.theme; // fallback if theme not in list
   }
 
   function getLocationIdFromUrl() {
@@ -429,6 +364,11 @@
     return null;
   }
 
+  function cvValue(cv) {
+    const v = cv?.value ?? cv?.defaultValue ?? null;
+    return typeof v === "string" && v.trim().length ? v : v ?? null;
+  }
+
   function mapCvsByName(customValues) {
     if (!Array.isArray(customValues)) {
       warn("mapCvsByName: not an array");
@@ -440,7 +380,7 @@
         const n = normalize(cv?.name || cv?.key || cv?.fieldKey);
         return n === normalize(displayName);
       });
-      out[key] = hit ? hit.value ?? hit.defaultValue ?? null : null;
+      out[key] = hit ? cvValue(hit) : null;
     }
     log("Mapped CVs:", out);
     return out;
@@ -497,7 +437,7 @@
       agencyName: finalValues.name,
       agencyPhoneNumber: finalValues.phone,
       agencySupportEmail: finalValues.supportEmail,
-      companyTheme: finalValues.companyTheme,
+      appTheme: finalValues.appTheme, // <-- exposed as appTheme
     };
     window.locationCustomValues = exposed;
     window.dispatchEvent(
@@ -526,7 +466,7 @@
           name: DEFAULTS.name,
           phone: DEFAULTS.phone,
           supportEmail: DEFAULTS.supportEmail,
-          companyTheme: theme,
+          appTheme: theme,
         });
       } finally {
         hideGlobalLoader();
@@ -534,12 +474,11 @@
       return;
     }
 
-    // If this location is already applied, skip (prevents reloading on same-location routes)
+    // Prevent redundant calls on same-location routes
     if (currentLocationId === locationId) {
       log("Same locationId detected (no re-init):", locationId);
       return;
     }
-
     if (initInFlight) {
       log("Init already in flight; skipping duplicate trigger");
       return;
@@ -564,7 +503,7 @@
           name: DEFAULTS.name,
           phone: DEFAULTS.phone,
           supportEmail: DEFAULTS.supportEmail,
-          companyTheme: theme,
+          appTheme: theme,
         });
         currentLocationId = locationId;
         log("initializeForLocation END (defaults applied)");
@@ -585,7 +524,7 @@
           name: DEFAULTS.name,
           phone: DEFAULTS.phone,
           supportEmail: DEFAULTS.supportEmail,
-          companyTheme: theme,
+          appTheme: theme,
         });
         currentLocationId = locationId;
         log("initializeForLocation END (defaults; no CVs)");
@@ -601,16 +540,16 @@
         name: safe(mapped.AGENCY_NAME, DEFAULTS.name),
         phone: safe(mapped.PHONE, DEFAULTS.phone),
         supportEmail: safe(mapped.SUPPORT_EMAIL, DEFAULTS.supportEmail),
-        companyTheme: safe(mapped.COMPANY_THEME, DEFAULTS.theme),
+        appTheme: safe(mapped.APP_THEME, DEFAULTS.theme), // <-- read "App Theme"
       };
 
-      log("Company Theme (raw):", finalValues.companyTheme);
-      const canon = canonicalizeTheme(finalValues.companyTheme);
-      log("Company Theme (canonical):", canon);
+      log("App Theme (raw):", finalValues.appTheme);
+      const canon = canonicalizeTheme(finalValues.appTheme);
+      log("App Theme (canonical):", canon);
 
       applyTheme(canon);
       applyAgencyLogo(finalValues.lightLogo, finalValues.darkLogo);
-      exposeValues({ ...finalValues, companyTheme: canon });
+      exposeValues({ ...finalValues, appTheme: canon });
 
       currentLocationId = locationId; // mark as applied so we ignore same-location routes
       log(
@@ -629,7 +568,7 @@
   function boot() {
     const id = getLocationIdFromUrl();
     log("BOOT detected locationId:", id);
-    // Run ASAP (don’t wait for DOM—loader handles body-not-ready)
+    // Run ASAP (don't wait for DOM—loader handles body-not-ready)
     initializeForLocation(id);
   }
 
@@ -661,6 +600,14 @@
     addEventListener("popstate", handleUrlChange);
     log("SPA navigation hooks installed (location-aware)");
   })();
+
+  // Visibility: log when others fire our event
+  window.addEventListener("customValuesLoaded", (e) => {
+    log(
+      "customValuesLoaded event observed:",
+      e.detail || window.locationCustomValues
+    );
+  });
 
   boot();
 })();

@@ -24,7 +24,7 @@
 
   /* Scrollbar */
   --scrollbar-track: var(--sb-bg);
-  --scrollbar-thumb: #14532d;
+  --scrollbar-thumb: var(--interact-bg); /* ← FIXED: was a hardcoded green */
 
   --glass-bg: rgba(255, 255, 255, 0.1); /* base translucency */
   --glass-bg-hover: rgba(255, 255, 255, 0.16);
@@ -383,28 +383,19 @@ button.n-button.n-button--primary-type {
     animation: none !important;
   }
 }
-
-/* === Location Switcher, Global Search, QuickActions (glass, no animation) === */
+/* Glassmorphism effect for switcher/search/quick actions */
 .sidebar-v2-location #sidebar-v2 #location-switcher-sidbar-v2,
 .sidebar-v2-location #sidebar-v2 #globalSearchOpener,
 .sidebar-v2-location #sidebar-v2 #quickActions {
-  background: rgba(255, 255, 255, 0.08) !important; /* subtle transparency */
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 12px !important;
-  padding: 8px 12px !important;
-  overflow: visible !important; /* keeps child menus/panels visible */
-  isolation: isolate; /* clean stacking */
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
-  transition: background 200ms ease, box-shadow 200ms ease,
-    border-color 200ms ease;
+  background: rgba(255, 255, 255, 0.08) !important; /* light transparency */
+
+  transition: background 200ms ease, box-shadow 200ms ease;
 }
 
-/* Hover = slightly stronger background */
+/* Slightly stronger on hover */
 .sidebar-v2-location #sidebar-v2 #location-switcher-sidbar-v2:hover,
 .sidebar-v2-location #sidebar-v2 #globalSearchOpener:hover,
 .sidebar-v2-location #sidebar-v2 #quickActions:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+  background: rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3) !important;
 }
