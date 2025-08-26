@@ -84,7 +84,7 @@
 
   const THEME_VARS = {
     yellow: {
-      "--sb-bg": "#1a1a00",
+      "--sb-bg": "#000000",
       "--interact-bg": "#facc15",
       "--interact-text": "#0a0a0a",
     },
