@@ -24,7 +24,7 @@
 
   /* Scrollbar */
   --scrollbar-track: var(--sb-bg);
-  --scrollbar-thumb: var(--interact-bg); /* ← FIXED: was a hardcoded green */
+  --scrollbar-thumb: var(--interact-bg);
 
   --glass-bg: rgba(255, 255, 255, 0.1); /* base translucency */
   --glass-bg-hover: rgba(255, 255, 255, 0.16);
@@ -50,7 +50,7 @@ html[data-theme="yellow"] {
   --interact-text: #0a0a0a; /* readable over yellow */
 
   --scrollbar-track: var(--sb-bg);
-  --scrollbar-thumb: #2b2b2b;
+  --scrollbar-thumb: var(--interact-bg);
 }
 
 /* GREEN: dark green containers + green accent */
@@ -65,7 +65,7 @@ html[data-theme="green"] {
   --interact-text: #ffffff;
 
   --scrollbar-track: var(--sb-bg);
-  --scrollbar-thumb: #14532d;
+  --scrollbar-thumb: var(--interact-bg);
 }
 
 /* RED: deep oxblood containers + red accent */
@@ -80,7 +80,7 @@ html[data-theme="red"] {
   --interact-text: #ffffff;
 
   --scrollbar-track: var(--sb-bg);
-  --scrollbar-thumb: #3a0b12;
+  --scrollbar-thumb: var(--interact-bg);
 }
 
 /* BLACK: pure black containers + gray accent (subtle) */
@@ -95,7 +95,7 @@ html[data-theme="black"] {
   --interact-text: #ffffff;
 
   --scrollbar-track: var(--sb-bg);
-  --scrollbar-thumb: #2e2e2e;
+  --scrollbar-thumb: var(--interact-bg);
 }
 
 /* WHITE: light containers + dark accent for visibility */
@@ -110,7 +110,7 @@ html[data-theme="white"] {
   --interact-text: #ffffff;
 
   --scrollbar-track: #e5e7eb;
-  --scrollbar-thumb: #9ca3af;
+  --scrollbar-thumb: var(--interact-bg);
 }
 
 /* ===================== SHARED RULES (use only variables) ===================== */
@@ -348,7 +348,7 @@ body {
   border-radius: 10px !important;
   background: #fff; /* keeps dropdown readable */
 }
-/* Naive‑UI Primary Buttons (kill borders; all sizes) */
+/* Naive-UI Primary Buttons (kill borders; all sizes) */
 .n-button--primary-type.n-button--small-type,
 .n-button--primary-type.n-button--medium-type,
 .n-button--primary-type.n-button--large-type,
