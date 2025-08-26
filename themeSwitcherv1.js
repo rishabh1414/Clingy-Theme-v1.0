@@ -9,7 +9,7 @@
    - Verbose console logs
    ========================================================= */
 (function () {
-  "use strict";
+  ("use strict");
 
   /* -------------------- CONFIG / LOGGING -------------------- */
   const DEBUG = true;
@@ -84,103 +84,93 @@
 
   const THEME_VARS = {
     yellow: {
-      "--sb-bg": "#000000",
-      "--interact-bg": "#ffdf2b",
+      "--sb-bg": "#1a1a00",
+      "--interact-bg": "#facc15",
       "--interact-text": "#0a0a0a",
     },
     green: {
-      "--sb-bg": "#0b1a12",
-      "--interact-bg": "#15803d",
+      "--sb-bg": "#0a1f14",
+      "--interact-bg": "#22c55e",
       "--interact-text": "#ffffff",
     },
     red: {
-      "--sb-bg": "#19070a",
-      "--interact-bg": "#dc2626",
-      "--interact-text": "#ffffff",
-    },
-    black: {
-      "--sb-bg": "#000000",
-      "--interact-bg": "#444444",
-      "--interact-text": "#ffffff",
-    },
-    white: {
-      "--sb-bg": "#ffffff",
-      "--interact-bg": "#111827",
+      "--sb-bg": "#2a0a0a",
+      "--interact-bg": "#ef4444",
       "--interact-text": "#ffffff",
     },
     blue: {
-      "--sb-bg": "#0a1a2f",
-      "--interact-bg": "#2563eb",
+      "--sb-bg": "#0a1525",
+      "--interact-bg": "#3b82f6",
       "--interact-text": "#ffffff",
     },
     teal: {
-      "--sb-bg": "#042f2e",
+      "--sb-bg": "#0a1f1f",
       "--interact-bg": "#14b8a6",
       "--interact-text": "#ffffff",
     },
     cyan: {
-      "--sb-bg": "#083344",
+      "--sb-bg": "#0a1f2a",
       "--interact-bg": "#06b6d4",
       "--interact-text": "#ffffff",
     },
     sky: {
-      "--sb-bg": "#0c4a6e",
+      "--sb-bg": "#0a1a2a",
       "--interact-bg": "#38bdf8",
       "--interact-text": "#0a0a0a",
     },
     indigo: {
-      "--sb-bg": "#1e1b4b",
-      "--interact-bg": "#4f46e5",
+      "--sb-bg": "#151533",
+      "--interact-bg": "#6366f1",
       "--interact-text": "#ffffff",
     },
     purple: {
-      "--sb-bg": "#2e1065",
-      "--interact-bg": "#9333ea",
+      "--sb-bg": "#1a0f2d",
+      "--interact-bg": "#a855f7",
       "--interact-text": "#ffffff",
     },
     violet: {
-      "--sb-bg": "#312e81",
-      "--interact-bg": "#7c3aed",
+      "--sb-bg": "#1a1330",
+      "--interact-bg": "#8b5cf6",
       "--interact-text": "#ffffff",
     },
     pink: {
-      "--sb-bg": "#831843",
+      "--sb-bg": "#2a0f1f",
       "--interact-bg": "#ec4899",
       "--interact-text": "#ffffff",
     },
     rose: {
-      "--sb-bg": "#881337",
+      "--sb-bg": "#2a0f18",
       "--interact-bg": "#f43f5e",
       "--interact-text": "#ffffff",
     },
     orange: {
-      "--sb-bg": "#431407",
-      "--interact-bg": "#ea580c",
+      "--sb-bg": "#2a1205",
+      "--interact-bg": "#f97316",
       "--interact-text": "#ffffff",
     },
     amber: {
-      "--sb-bg": "#451a03",
+      "--sb-bg": "#1f1505",
       "--interact-bg": "#f59e0b",
       "--interact-text": "#0a0a0a",
     },
     lime: {
-      "--sb-bg": "#1a2e05",
+      "--sb-bg": "#1a220a",
       "--interact-bg": "#84cc16",
       "--interact-text": "#0a0a0a",
     },
     emerald: {
-      "--sb-bg": "#022c22",
+      "--sb-bg": "#0a1f18",
       "--interact-bg": "#10b981",
       "--interact-text": "#ffffff",
     },
     fuchsia: {
-      "--sb-bg": "#4a044e",
+      "--sb-bg": "#240a2a",
       "--interact-bg": "#d946ef",
       "--interact-text": "#ffffff",
     },
     gray: {
-      "--sb-bg": "#111827",
-      "--interact-bg": "#6b7280",
+      "--sb-bg": "#0f0f0f",
+      "--interact-bg": "#9ca3af",
       "--interact-text": "#ffffff",
     },
     slate: {
@@ -204,38 +194,38 @@
       "--interact-text": "#ffffff",
     },
     brown: {
-      "--sb-bg": "#3e2723",
-      "--interact-bg": "#8d6e63",
+      "--sb-bg": "#1a0f0a",
+      "--interact-bg": "#92400e",
       "--interact-text": "#ffffff",
     },
     gold: {
-      "--sb-bg": "#3b2f1e",
-      "--interact-bg": "#ffd700",
+      "--sb-bg": "#1a1405",
+      "--interact-bg": "#eab308",
       "--interact-text": "#0a0a0a",
     },
     silver: {
-      "--sb-bg": "#374151",
+      "--sb-bg": "#1a1a1a",
       "--interact-bg": "#9ca3af",
       "--interact-text": "#000000",
     },
     navy: {
-      "--sb-bg": "#0a1128",
+      "--sb-bg": "#0a1120",
       "--interact-bg": "#1e3a8a",
       "--interact-text": "#ffffff",
     },
     maroon: {
-      "--sb-bg": "#2c0a1e",
-      "--interact-bg": "#800000",
+      "--sb-bg": "#1a0a0f",
+      "--interact-bg": "#991b1b",
       "--interact-text": "#ffffff",
     },
     olive: {
-      "--sb-bg": "#1a2e05",
-      "--interact-bg": "#808000",
+      "--sb-bg": "#1a1f0a",
+      "--interact-bg": "#4d7c0f",
       "--interact-text": "#ffffff",
     },
     aqua: {
-      "--sb-bg": "#032b2b",
-      "--interact-bg": "#00ffff",
+      "--sb-bg": "#0a1f1f",
+      "--interact-bg": "#06b6d4",
       "--interact-text": "#0a0a0a",
     },
   };
@@ -400,32 +390,85 @@
     log("Applied theme vars:", vars);
   }
 
-  function applyAgencyLogo(lightLogo, darkLogo) {
-    const src = safe(lightLogo, null) || safe(darkLogo, null);
+  // Use dark first, then fall back to light
+  // Use dark first, then fall back to light.
+  // Pass current locationId so we can cache-bust per location.
+  function applyAgencyLogo(darkLogo, lightLogo, locationId) {
+    const dark = safe(darkLogo, null);
+    const light = safe(lightLogo, null);
+    const rawSrc = dark || light;
+    if (!rawSrc) {
+      warn("No logo URL found (dark/light)");
+      return;
+    }
+
+    // Cache-bust by location so browser won't reuse previous location's image.
+    const src =
+      rawSrc +
+      (rawSrc.includes("?") ? "&" : "?") +
+      "v=" +
+      encodeURIComponent(locationId || "");
+
     log("applyAgencyLogo → chosen URL:", src);
-    if (!src) {
-      warn("No logo URL found (light/dark)");
-      return;
-    }
-    const nodes = document.querySelectorAll(
-      ".agency-logo, img.agency-logo, [data-agency-logo]"
-    );
-    if (!nodes.length) {
-      warn("No .agency-logo elements found");
-      return;
-    }
-    nodes.forEach((el) => {
-      if (el.tagName === "IMG") {
-        if (el.src !== src) el.src = src;
-      } else {
-        el.style.backgroundImage = `url(${src})`;
-        el.style.backgroundSize = "contain";
-        el.style.backgroundRepeat = "no-repeat";
-        el.style.backgroundPosition = "center";
+
+    const SELECTORS = [".agency-logo", "img.agency-logo", "[data-agency-logo]"];
+    const TIMEOUT_MS = 15000; // watch longer; GHL can remount late
+    const RETRY_EVERY_MS = 200;
+
+    // Attach logo to all known targets
+    const attach = () => {
+      let count = 0;
+      SELECTORS.forEach((sel) => {
+        document.querySelectorAll(sel).forEach((el) => {
+          if (el.tagName === "IMG") {
+            // Always set; don't skip if equal
+            el.src = src;
+            if (el.srcset) el.removeAttribute("srcset");
+            el.decoding = "async";
+            el.loading = "eager";
+          } else {
+            el.style.backgroundImage = `url("${src}")`;
+            el.style.backgroundSize = "contain";
+            el.style.backgroundRepeat = "no-repeat";
+            el.style.backgroundPosition = "center";
+          }
+          el.classList.add("logo-updated");
+          count++;
+        });
+      });
+      if (count > 0) log("Updated agency logo on", count, "element(s)");
+      return count > 0;
+    };
+
+    // Try now
+    let applied = attach();
+    if (applied) return;
+
+    // Retry for a while (DOM might not be ready yet)
+    const started = Date.now();
+    const iv = setInterval(() => {
+      applied = attach();
+      if (applied || Date.now() - started > TIMEOUT_MS) {
+        clearInterval(iv);
+        if (!applied) warn("Logo targets not found within retry window.");
       }
-      el.classList.add("logo-updated");
-    });
-    log("Updated agency logo on", nodes.length, "element(s)");
+    }, RETRY_EVERY_MS);
+
+    // Also watch for header mutations and re-attach when nodes appear
+    try {
+      const header = document.querySelector(".hl_header") || document.body;
+      const mo = new MutationObserver(() => {
+        if (attach()) {
+          // Once we succeed due to remount, we can disconnect the observer
+          mo.disconnect();
+        }
+      });
+      mo.observe(header, { childList: true, subtree: true });
+      // Safety: disconnect after TIMEOUT_MS to avoid leaking observers
+      setTimeout(() => mo.disconnect(), TIMEOUT_MS);
+    } catch (e) {
+      // Non-fatal
+    }
   }
 
   function exposeValues(finalValues) {
@@ -457,7 +500,7 @@
       try {
         const theme = DEFAULTS.theme;
         applyTheme(theme);
-        applyAgencyLogo(DEFAULTS.lightLogo, DEFAULTS.darkLogo);
+        applyAgencyLogo(DEFAULTS.lightLogo, DEFAULTS.darkLogo, locationId);
         exposeValues({
           color1: DEFAULTS.color1,
           color2: DEFAULTS.color2,
@@ -494,7 +537,7 @@
         warn("No token; using defaults");
         const theme = DEFAULTS.theme;
         applyTheme(theme);
-        applyAgencyLogo(DEFAULTS.lightLogo, DEFAULTS.darkLogo);
+        applyAgencyLogo(DEFAULTS.lightLogo, DEFAULTS.darkLogo, locationId);
         exposeValues({
           color1: DEFAULTS.color1,
           color2: DEFAULTS.color2,
@@ -515,7 +558,7 @@
         warn("No CV list; applying defaults");
         const theme = DEFAULTS.theme;
         applyTheme(theme);
-        applyAgencyLogo(DEFAULTS.lightLogo, DEFAULTS.darkLogo);
+        applyAgencyLogo(DEFAULTS.lightLogo, DEFAULTS.darkLogo, locationId);
         exposeValues({
           color1: DEFAULTS.color1,
           color2: DEFAULTS.color2,
@@ -548,7 +591,7 @@
       log("App Theme (canonical):", canon);
 
       applyTheme(canon);
-      applyAgencyLogo(finalValues.lightLogo, finalValues.darkLogo);
+      applyAgencyLogo(finalValues.lightLogo, finalValues.darkLogo, locationId);
       exposeValues({ ...finalValues, appTheme: canon });
 
       currentLocationId = locationId; // mark as applied so we ignore same-location routes
