@@ -260,7 +260,7 @@
         opacity: 1; transition: opacity 260ms ease;
         pointer-events: all;
       `;
-      el.innerHTML = `<div>Theme is Loading....</div>`;
+      el.innerHTML = `<div>Loading....</div>`;
       document.body.insertBefore(el, document.body.firstChild || null);
       log("Global loader shown (prepended to body)");
     };
