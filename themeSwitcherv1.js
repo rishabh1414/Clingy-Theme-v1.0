@@ -36,14 +36,14 @@
   // Defaults
   const DEFAULTS = {
     color1: "#000000",
-    color2: "#ffdf2b",
+    color2: "#1993d0",
     darkLogo:
-      "https://storage.googleapis.com/msgsndr/BkFiZbApZikznjlKBFX7/media/678e5c7caccdd164c283efb0.png",
+      "https://storage.googleapis.com/msgsndr/BkFiZbApZikznjlKBFX7/media/694d7672f344f3cbfc5e9d58.png",
     lightLogo:
-      "https://storage.googleapis.com/msgsndr/BkFiZbApZikznjlKBFX7/media/678e5c7c38930748655f4002.png",
+      "https://storage.googleapis.com/msgsndr/BkFiZbApZikznjlKBFX7/media/694d7672ee1047f12eb05d84.png",
     name: "Clingy",
     phone: "(347) 682-4506",
-    supportEmail: "supportsquad@clingy.app",
+    supportEmail: "supportsquad@secureautomation.app",
     theme: "yellow",
   };
 
