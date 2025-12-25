@@ -1,5 +1,5 @@
 /* =========================================================
-   CLINGY — Theme + CV Loader (App Theme only)
+   Secure Automation — Theme + CV Loader (App Theme only)
    - Runs ONLY when locationId changes (not on every route)
    - Global loader sits ABOVE GHL loader
    - Fetches 7 CVs + "App Theme"
@@ -13,9 +13,9 @@
 
   /* -------------------- CONFIG / LOGGING -------------------- */
   const DEBUG = true;
-  const log = (...a) => DEBUG && console.log("[CLINGY]", ...a);
-  const warn = (...a) => console.warn("[CLINGY]", ...a);
-  const err = (...a) => console.error("[CLINGY]", ...a);
+  const log = (...a) => DEBUG && console.log("[Secure Automation]", ...a);
+  const warn = (...a) => console.warn("[Secure Automation]", ...a);
+  const err = (...a) => console.error("[Secure Automation]", ...a);
 
   const TOKEN_API =
     "https://apiv1.securebusinessautomation.com/api/auth/location-token";
@@ -41,7 +41,7 @@
       "https://storage.googleapis.com/msgsndr/BkFiZbApZikznjlKBFX7/media/694d7672f344f3cbfc5e9d58.png",
     lightLogo:
       "https://storage.googleapis.com/msgsndr/BkFiZbApZikznjlKBFX7/media/694d7672ee1047f12eb05d84.png",
-    name: "Clingy",
+    name: "Secure Automation",
     phone: "(347) 682-4506",
     supportEmail: "supportsquad@secureautomation.app",
     theme: "yellow",
@@ -243,10 +243,10 @@
   }
 
   function showGlobalLoader() {
-    if (document.getElementById("clingy-global-loader")) return;
+    if (document.getElementById("Secure Automation-global-loader")) return;
     const create = () => {
       const el = document.createElement("div");
-      el.id = "clingy-global-loader";
+      el.id = "Secure Automation-global-loader";
       el.style.cssText = `
         position: fixed; inset: 0;
         width: 100vw; height: 100vh;
@@ -268,7 +268,7 @@
   }
 
   function hideGlobalLoader() {
-    const el = document.getElementById("clingy-global-loader");
+    const el = document.getElementById("Secure Automation-global-loader");
     if (!el) return;
     el.style.opacity = "0";
     setTimeout(() => {
