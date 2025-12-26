@@ -1,77 +1,95 @@
+/* ===================================================== */
+/* SIDEBAR — MAIN BACKGROUND */
+/* ===================================================== */
 
-
-/* main background color */
 .sidebar-v2-agency #sidebar-v2 .default-bg-color,
 .sidebar-v2-agency #sidebar-v2.default-bg-color {
     background: #0b1324 !important;
 }
 
-/* active + hover color for menu links */
+/* ===================================================== */
+/* SIDEBAR — DEFAULT HOVER / ACTIVE (NON-CUSTOM LINKS) */
+/* ===================================================== */
+
 .sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a:hover,
 .sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a.active {
     background: #132b5e !important;
 }
 
-/* location switcher (desktop) */
+/* ===================================================== */
+/* LOCATION SWITCHER (DESKTOP ONLY) */
+/* ===================================================== */
+
 @media (min-width: 1280px) {
     .sidebar-v2-agency #sidebar-v2 #location-switcher-sidbar-v2 {
         background-color: #0f1f3d !important;
     }
 }
-/* custom menu links - base reset */
-.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a,
+
+/* ===================================================== */
+/* CUSTOM MENU LINKS — BASE STATE */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a,
 #sidebar-v2 a.custom-link,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer nav a {
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a {
     background: transparent !important;
     padding: 8px 16px !important;
-    margin: 2px 0px !important;
+    margin: 2px 0 !important;
     border-radius: 0 !important;
 }
 
-/* custom menu links - hover + active */
-.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a:hover,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a.active,
+/* ===================================================== */
+/* CUSTOM MENU LINKS — HOVER + ACTIVE */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a:hover,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a.active,
 #sidebar-v2 a.custom-link:hover,
 #sidebar-v2 a.custom-link.active,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer nav a:hover,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer nav a.active {
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a:hover,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a.active {
     background: #132b5e !important;
     padding: 8px 16px !important;
-    margin: 2px 0px !important;
+    margin: 2px 0 !important;
     border-radius: 0 !important;
 }
 
-/* icons — always white (base + hover + active) */
+/* ===================================================== */
+/* ICONS — ALWAYS WHITE (CUSTOM + NATIVE) */
+/* ===================================================== */
+
 #sidebar-v2 a.custom-link i,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a i,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer nav a i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a i,
 #sidebar-v2 a.custom-link:hover i,
 #sidebar-v2 a.custom-link.active i,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a:hover i,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header nav a.active i,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer nav a:hover i,
-.sidebar-v2-location #sidebar-v2 .hl_nav-header-without-footer nav a.active i {
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a:hover i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a.active i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a:hover i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a.active i {
     color: #ffffff !important;
 }
-/* ============================= */
+
+/* ===================================================== */
 /* AGENCY MENU LINKS — BASE */
-/* ============================= */
+/* ===================================================== */
 
 .sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a,
 .sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a {
     background: transparent !important;
     padding: 8px 16px !important;
-    margin: 2px 0px !important;
+    margin: 2px 0 !important;
     border-radius: 0 !important;
 
-    /* kill motion */
+    /* disable GHL hover animations */
     transition: none !important;
     transform: none !important;
 }
 
-/* ============================= */
+/* ===================================================== */
 /* AGENCY MENU LINKS — HOVER + ACTIVE */
-/* ============================= */
+/* ===================================================== */
 
 .sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a:hover,
 .sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a.active,
@@ -79,16 +97,16 @@
 .sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a.active {
     background: #132b5e !important;
     padding: 8px 16px !important;
-    margin: 2px 0px !important;
+    margin: 2px 0 !important;
     border-radius: 0 !important;
 
     transition: none !important;
     transform: none !important;
 }
 
-/* ============================= */
-/* ICONS — ALWAYS WHITE */
-/* ============================= */
+/* ===================================================== */
+/* ICONS — AGENCY MENU (ALWAYS WHITE) */
+/* ===================================================== */
 
 .sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a i,
 .sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a i,
@@ -101,26 +119,32 @@
     transform: none !important;
 }
 
-/* ============================= */
-/* SAFETY NET — NUCLEAR MOTION KILL */
-/* ============================= */
+/* ===================================================== */
+/* SAFETY NET — REMOVE ALL SCALE / TRANSLATE EFFECTS */
+/* ===================================================== */
 
 .sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a *,
 .sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a * {
     transition: none !important;
     transform: none !important;
 }
+
+/* ===================================================== */
+/* "NEW" BADGE — BLUE VARIANT */
+/* ===================================================== */
+
 .hl_new_badge {
     display: block;
     padding: 0 4px;
     line-height: 15px;
-    font-size: .8rem;
+    font-size: 0.8rem;
     margin: -16px 10px 0 5px;
     border: 1px solid #1e40af !important;
     border-radius: 3px;
     background: #2563eb !important;
     color: #ffffff !important;
 }
+
 
 /* ============================= */
 /* LOGIN PAGE – LIGHT & CLEAN */
