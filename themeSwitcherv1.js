@@ -44,7 +44,7 @@
     name: "Secure Automation",
     phone: "(347) 682-4506",
     supportEmail: "supportsquad@secureautomation.app",
-    theme: "yellow",
+    theme: "sky",
   };
 
   /* -------------------- THEMES (30+) -------------------- */
