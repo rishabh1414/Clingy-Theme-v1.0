@@ -1,3 +1,296 @@
+/* ===================================================== */
+/* SIDEBAR — MAIN BACKGROUND */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .default-bg-color,
+.sidebar-v2-agency #sidebar-v2.default-bg-color {
+    background: #0b1324 !important;
+}
+
+/* ===================================================== */
+/* SIDEBAR — DEFAULT HOVER / ACTIVE (NON-CUSTOM LINKS) */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a:hover,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a.active {
+    background: #132b5e !important;
+}
+
+/* ===================================================== */
+/* LOCATION SWITCHER (DESKTOP ONLY) */
+/* ===================================================== */
+
+@media (min-width: 1280px) {
+    .sidebar-v2-agency #sidebar-v2 #location-switcher-sidbar-v2 {
+        background-color: #0f1f3d !important;
+    }
+}
+
+/* ===================================================== */
+/* CUSTOM MENU LINKS — BASE STATE */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a,
+#sidebar-v2 a.custom-link,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a {
+    background: transparent !important;
+    padding: 8px 16px !important;
+    margin: 2px 0 !important;
+    border-radius: 0 !important;
+}
+
+/* ===================================================== */
+/* CUSTOM MENU LINKS — HOVER + ACTIVE */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a:hover,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a.active,
+#sidebar-v2 a.custom-link:hover,
+#sidebar-v2 a.custom-link.active,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a:hover,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a.active {
+    background: #132b5e !important;
+    padding: 8px 16px !important;
+    margin: 2px 0 !important;
+    border-radius: 0 !important;
+}
+
+/* ===================================================== */
+/* ICONS — ALWAYS WHITE (CUSTOM + NATIVE) */
+/* ===================================================== */
+
+#sidebar-v2 a.custom-link i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a i,
+#sidebar-v2 a.custom-link:hover i,
+#sidebar-v2 a.custom-link.active i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a:hover i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a.active i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a:hover i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header-without-footer nav a.active i {
+    color: #ffffff !important;
+}
+
+/* ===================================================== */
+/* AGENCY MENU LINKS — BASE */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a {
+    background: transparent !important;
+    padding: 8px 16px !important;
+    margin: 2px 0 !important;
+    border-radius: 0 !important;
+
+    /* disable GHL hover animations */
+    transition: none !important;
+    transform: none !important;
+}
+
+/* ===================================================== */
+/* AGENCY MENU LINKS — HOVER + ACTIVE */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a:hover,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a.active,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a:hover,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a.active {
+    background: #132b5e !important;
+    padding: 8px 16px !important;
+    margin: 2px 0 !important;
+    border-radius: 0 !important;
+
+    transition: none !important;
+    transform: none !important;
+}
+
+/* ===================================================== */
+/* ICONS — AGENCY MENU (ALWAYS WHITE) */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a:hover i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a.active i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a:hover i,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a.active i {
+    color: #ffffff !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* ===================================================== */
+/* SAFETY NET — REMOVE ALL SCALE / TRANSLATE EFFECTS */
+/* ===================================================== */
+
+.sidebar-v2-agency #sidebar-v2 .hl_nav-header nav a *,
+.sidebar-v2-agency #sidebar-v2 .hl_nav-settings nav a * {
+    transition: none !important;
+    transform: none !important;
+}
+
+/* ===================================================== */
+/* "NEW" BADGE — BLUE VARIANT */
+/* ===================================================== */
+
+.hl_new_badge {
+    display: block;
+    padding: 0 4px;
+    line-height: 15px;
+    font-size: 0.8rem;
+    margin: -16px 10px 0 5px;
+    border: 1px solid #1e40af !important;
+    border-radius: 3px;
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+
+/* ============================= */
+/* LOGIN PAGE – LIGHT & CLEAN */
+/* ============================= */
+
+.hl_login {
+    background: #ffffff !important;
+    min-height: 100vh;
+}
+
+/* ============================= */
+/* HEADER (LOGO AREA) */
+/* ============================= */
+
+.hl_login--header {
+    background: #ffffff !important;
+    padding: 24px 0 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+.hl_login--header img {
+    max-height: 60px !important;
+}
+
+/* ============================= */
+/* LOGIN CARD */
+/* ============================= */
+
+.hl_login--body .card {
+    background: #ffffff !important;
+    border-radius: 10px !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08) !important;
+}
+
+.hl_login--body .card-body {
+    padding: 32px !important;
+}
+.hl_login--header .container-fluid{
+      justify-content: center !important;
+}
+/* ============================= */
+/* HEADINGS */
+/* ============================= */
+
+.login-card-heading h2 {
+    color: #0f172a !important;
+    font-weight: 700 !important;
+    margin-bottom: 6px !important;
+}
+
+.login-card-heading h4 {
+    color: #64748b !important;
+}
+
+/* ============================= */
+/* INPUT FIELDS */
+/* ============================= */
+
+.hl-text-input {
+    border-radius: 6px !important;
+    border: 1px solid #d1d5db !important;
+    padding: 10px 12px !important;
+    background: #ffffff !important;
+}
+
+.hl-text-input:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 1px #2563eb !important;
+}
+
+/* ============================= */
+/* LINKS */
+/* ============================= */
+
+.forgot-password {
+    color: #2563eb !important;
+}
+
+.forgot-password:hover {
+    color: #1e40af !important;
+}
+
+/* ============================= */
+/* PRIMARY BUTTON */
+/* ============================= */
+
+.hl-btn.bg-curious-blue-500 {
+    background: #2563eb !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+}
+
+.hl-btn.bg-curious-blue-500:hover {
+    background: #1e40af !important;
+}
+
+/* ============================= */
+/* GOOGLE LOGIN BUTTON */
+/* ============================= */
+
+#wl_google_login_button {
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+}
+
+/* ============================= */
+/* DIVIDER */
+/* ============================= */
+
+.hl_login .border-t {
+    border-color: #e5e7eb !important;
+}
+
+.hl_login .text-gray-500 {
+    color: #6b7280 !important;
+}
+
+/* ============================= */
+/* FOOT NOTE */
+/* ============================= */
+
+.hl_login .foot-note {
+    color: #6b7280 !important;
+    font-size: 13px !important;
+}
+
+.hl_login .foot-note a {
+    color: #2563eb !important;
+}
+
+.hl_login .foot-note a:hover {
+    color: #1e40af !important;
+}
+.sidebar-v2-agency .hl_login {
+    width: 100% !important;
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url("https://storage.googleapis.com/msgsndr/7eneOMActeQ2ni1nqja8/media/694e6d0573a5e0df4b29a6bc.png") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
 
 
 /* ===================== CLINGY – GHL THEME (Sidebar + Topbar Only) Sub Accounts ===================== */
